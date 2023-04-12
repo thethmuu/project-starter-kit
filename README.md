@@ -1,10 +1,11 @@
-This is a Starter Setup for React, Next.js, TailwidCSS, Next-Auth, Prisma, TypeScript Projects 
+Starter Setup for Your Next Project
+- React, Next.js, TailwidCSS, Next-Auth, Prisma, TypeScript
 
 ## Sample .env file
-DATABASE_URL="file:./dev.db"
-EMAIL_SERVER=smtp://user:pass@smtp.mailtrap.io:465
-EMAIL_FROM=Your name <you@email.com>
-NEXTAUTH_URL=http://localhost:3000
+DATABASE_URL="file:./dev.db"<br>
+EMAIL_SERVER=smtp://user:pass@smtp.mailtrap.io:465<br>
+EMAIL_FROM=Your name <you@email.com><br>
+NEXTAUTH_URL=http://localhost:3000<br>
 SECRET=<ENTER A UNIQUE STRING HERE>
 
 ### Generate secret code
