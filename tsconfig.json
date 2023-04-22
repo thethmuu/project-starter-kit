@@ -25,7 +25,7 @@
     "**/*.js",
     "**/*.jsx",
     "lib/prisma.js",
-    "pages/api/auth/[...nextauth].js"
+    "pages/api/auth/[...nextauth].ts"
   ],
   "exclude": ["node_modules"]
 }
