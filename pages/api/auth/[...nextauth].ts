@@ -1,11 +1,11 @@
 import bcrypt from 'bcrypt';
-import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import NextAuth from 'next-auth';
+import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
 
 import prisma from '@/lib/prisma';
 
-export default NextAuth({
+export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
@@ -25,13 +25,13 @@ export default NextAuth({
           },
         });
 
-        if (!user || !user.hashedPassword) {
+        if (!user || !user?.hashedPassword) {
           throw new Error('Invalid credentials');
         }
 
-        const isCorrectPassword = bcrypt.compare(
-          user.hashedPassword,
-          credentials.password
+        const isCorrectPassword = await bcrypt.compare(
+          credentials.password,
+          user.hashedPassword
         );
 
         if (!isCorrectPassword) {
@@ -46,8 +46,7 @@ export default NextAuth({
   session: {
     strategy: 'jwt',
   },
-  jwt: {
-    secret: process.env.NEXTAUTH_JWT_SECRET,
-  },
   secret: process.env.NEXTAUTH_SECRET,
-});
+};
+
+export default NextAuth(authOptions);
