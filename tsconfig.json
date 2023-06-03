@@ -16,7 +16,12 @@
     "incremental": true,
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
@@ -25,7 +30,8 @@
     "**/*.js",
     "**/*.jsx",
     "lib/prisma.js",
-    "pages/api/auth/[...nextauth].ts"
+    "pages/api/auth/[...nextauth].ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
